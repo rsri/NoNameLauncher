@@ -1,4 +1,4 @@
-package com.passtime.nonamelauncher.model;
+package com.passtime.slauncher.model;
 
 import android.graphics.drawable.Drawable;
 

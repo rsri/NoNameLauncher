@@ -1,4 +1,4 @@
-package com.passtime.nonamelauncher;
+package com.passtime.slauncher;
 
 import org.junit.Test;
 

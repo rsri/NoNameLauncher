@@ -1,4 +1,4 @@
-package com.passtime.nonamelauncher;
+package com.passtime.slauncher;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.passtime.nonamelauncher.adapters.AppsListAdapter;
-import com.passtime.nonamelauncher.model.AppDetail;
-import com.passtime.nonamelauncher.util.Constants;
+import com.passtime.slauncher.adapters.AppsListAdapter;
+import com.passtime.slauncher.model.AppDetail;
+import com.passtime.slauncher.util.Constants;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package com.passtime.nonamelauncher.adapters;
+package com.passtime.slauncher.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.passtime.nonamelauncher.R;
-import com.passtime.nonamelauncher.model.AppDetail;
+import com.passtime.slauncher.R;
+import com.passtime.slauncher.model.AppDetail;
 
 import java.util.List;
 
@@ -18,6 +18,8 @@ import java.util.List;
 public class AppsListAdapter extends BaseAdapter {
 
     private List<AppDetail> appDetails;
+    private boolean animate = false;
+    private int animatePosition = -1;
 
     public AppsListAdapter(List<AppDetail> appDetails) {
         this.appDetails = appDetails;
@@ -25,11 +27,26 @@ public class AppsListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return appDetails.size();
+        return appDetails.size()+1;
+    }
+
+    public void startAnimation(int position) {
+        animate = true;
+        animatePosition = position;
+        notifyDataSetChanged();
+    }
+
+    public void stopAnimation() {
+        animate = false;
+        animatePosition = -1;
+        notifyDataSetChanged();
     }
 
     @Override
     public AppDetail getItem(int position) {
+        if (position == appDetails.size()) {
+            return null;
+        }
         return appDetails.get(position);
     }
 
@@ -54,9 +71,21 @@ public class AppsListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        AppDetail appDetail = appDetails.get(position);
-        holder.label.setText(appDetail.getAppName());
-        holder.icon.setImageDrawable(appDetail.getAppIcon());
+        if (position == appDetails.size()) {
+            holder.label.setVisibility(View.INVISIBLE);
+            holder.icon.setVisibility(View.INVISIBLE);
+        } else {
+            AppDetail appDetail = appDetails.get(position);
+            int visibility = View.VISIBLE;
+            if (animate && position != animatePosition) {
+                visibility = View.INVISIBLE;
+            }
+            holder.label.setVisibility(visibility);
+            holder.icon.setVisibility(visibility);
+            holder.label.setText(appDetail.getAppName());
+            holder.icon.setImageDrawable(appDetail.getAppIcon());
+        }
+
 
         return convertView;
     }

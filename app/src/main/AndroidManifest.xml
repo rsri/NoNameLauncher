@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.passtime.nonamelauncher">
+    package="com.passtime.slauncher">
 
     <application
-        android:allowBackup="true"
+        android:clearTaskOnLaunch="true"
+        android:excludeFromRecents="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Simple Launcher Home"
         android:launchMode="singleTask"
+        android:screenOrientation="user"
         android:stateNotNeeded="true"
-        android:theme="@android:style/Theme.Wallpaper"
-        >
-        <activity android:name=".HomeActivity">
+        android:theme="@style/LauncherTheme"
+        android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+
+        <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar"> -->
+        <activity android:name="com.passtime.slauncher.AppsListActivity" />
+        <activity
+            android:name="com.passtime.slauncher.LauncherActivity"
+            android:label="@string/title_activity_launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +25,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AppsListActivity" />
     </application>
 
 </manifest>

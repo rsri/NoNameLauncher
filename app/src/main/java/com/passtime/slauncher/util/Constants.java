@@ -1,4 +1,4 @@
-package com.passtime.nonamelauncher.util;
+package com.passtime.slauncher.util;
 
 /**
  * Created by srikaram on 02-Nov-16.
